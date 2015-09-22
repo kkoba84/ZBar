@@ -38,7 +38,8 @@ setup(
                 'decoder.c',
                 'scanner.c',
                 ],
-            libraries = [ 'zbar' ],
+            libraries = [ 'libzbar','gdi32','winmm','vfw32','user32','iconv' ],
+	    include_dirs= ['../include']
         ),
     ],
 )

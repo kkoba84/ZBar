@@ -62,6 +62,10 @@ CHECK_INCLUDE_FILES(X11/extensions/Xvlib.h HAVE_X11_EXTENSIONS_XVLIB_H)
 
 if (MSVC)
 	set(inline ON)
+	
+	add_subdirectory("win-iconv")
+	include_directories("win-iconv")
+	link_directories("${CMAKE_CURRENT_BINARY_DIR}/win-iconv")
 endif()
 
 
@@ -69,5 +73,8 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/include/config.h.in"
 			   "${CMAKE_CURRENT_SOURCE_DIR}/include/config.h")
 
 add_subdirectory(zbar)
+add_subdirectory(examples)
+add_subdirectory(python)
+
 
 

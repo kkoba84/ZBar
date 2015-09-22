@@ -116,13 +116,14 @@ static LRESULT CALLBACK win_handle_event (HWND hwnd,
                                           WPARAM wparam,
                                           LPARAM lparam)
 {
-    zbar_processor_t *proc =
-        (zbar_processor_t*)GetWindowLongPtr(hwnd, GWL_USERDATA);
+	zbar_processor_t *proc =
+		(zbar_processor_t*)GetWindowLongPtr(hwnd, GWLP_USERDATA);
+        //(zbar_processor_t*)GetWindowLongPtr(hwnd, GWL_USERDATA);
     /* initialized during window creation */
     if(message == WM_NCCREATE) {
         proc = ((LPCREATESTRUCT)lparam)->lpCreateParams;
         assert(proc);
-        SetWindowLongPtr(hwnd, GWL_USERDATA, (LONG_PTR)proc);
+        SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)proc);
         proc->display = hwnd;
 
         zbar_window_attach(proc->window, proc->display, proc->xwin);

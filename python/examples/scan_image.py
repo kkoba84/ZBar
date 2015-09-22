@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from sys import argv
 import zbar
-import Image
+from PIL import Image
 
 if len(argv) < 2: exit(1)
 

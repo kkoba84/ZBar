@@ -182,15 +182,15 @@ static PyMethodDef zbar_functions[] = {
 };
 
 PyMODINIT_FUNC
-initzbar (void)
+initzbar(void)
 {
-    /* initialize types */
-    zbarEnumItem_Type.tp_base = &PyInt_Type;
-    zbarException_Type.tp_base = (PyTypeObject*)PyExc_Exception;
+	/* initialize types */
+	zbarEnumItem_Type.tp_base = &PyInt_Type;
+	zbarException_Type.tp_base = (PyTypeObject*)PyExc_Exception;
 
     if(PyType_Ready(&zbarException_Type) < 0 ||
        PyType_Ready(&zbarEnumItem_Type) < 0 ||
-       PyType_Ready(&zbarEnum_Type) < 0 ||
+	   PyType_Ready(&zbarEnum_Type) < 0 ||
        PyType_Ready(&zbarImage_Type) < 0 ||
        PyType_Ready(&zbarSymbol_Type) < 0 ||
        PyType_Ready(&zbarSymbolSet_Type) < 0 ||
@@ -200,6 +200,7 @@ initzbar (void)
        PyType_Ready(&zbarDecoder_Type) < 0 ||
        PyType_Ready(&zbarScanner_Type) < 0)
         return;
+
 
     /* initialize constant containers */
     config_enum = zbarEnum_New();

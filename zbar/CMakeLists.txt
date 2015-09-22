@@ -88,16 +88,26 @@ endif()
 file(GLOB decoder_srcs "decoder/*.c")
 file(GLOB decoder_hdrs "decoder/*.h")
 
+if (MSVC)
+	add_definitions("-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE")
+	set(WIN_DEPEND_LIB "winmm" "gdi32" "vfw32")
+
+	list(APPEND srcs "processor/win.c")
+	list(APPEND srcs "window/win.c")
+	list(APPEND srcs "window/dib.c")
+	list(APPEND hdrs "window/win.h")
+	list(APPEND srcs "video/vfw.c")
+endif()
 
 
 source_group("include" FILES ${hdrs})
 source_group("src" FILES ${srcs})
 
-if (MSVC)
-	add_definitions("-D_CRT_SECURE_NO_DEPRECATE -D_CRT_NONSTDC_NO_DEPRECATE")
-endif()
 
-add_library(${projname} SHARED 	${srcs} ${hdrs} )
+
+
+add_library(${projname} STATIC 	${srcs} ${hdrs} )
+target_link_libraries(${projname} iconv ${WIN_DEPEND_LIB})
 
 
 

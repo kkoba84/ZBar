@@ -5,7 +5,7 @@ import zbar
 
 # FIXME this needs to be conditional
 # would be even better to auto-select PIL or ImageMagick (or...)
-import Image
+from PIL import Image
 
 data = None
 size = (0, 0)

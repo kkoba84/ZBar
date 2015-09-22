@@ -194,7 +194,8 @@ int _zbar_window_draw_polygon (zbar_window_t *w,
     win_set_rgb(hdc, rgb);
 
     point_t org = w->scaled_offset;
-    POINT gdipts[npts + 1];
+	POINT * gdipts;
+	gdipts = (POINT*)malloc(sizeof(POINT) * (npts + 1));
     int i;
     for(i = 0; i < npts; i++) {
         point_t p = window_scale_pt(w, pts[i]);
@@ -204,6 +205,9 @@ int _zbar_window_draw_polygon (zbar_window_t *w,
     gdipts[npts] = gdipts[0];
 
     Polyline(hdc, gdipts, npts + 1);
+
+	free(gdipts);
+
     return(0);
 }
 

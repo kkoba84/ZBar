@@ -18,6 +18,7 @@ class MyHandler : public Image::Handler
 
 int main (int argc, char **argv)
 {
+	
     // create and initialize a Processor
     const char *device = "/dev/video0";
     if(argc > 1)
