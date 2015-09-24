@@ -23,6 +23,7 @@
 
 #include <Python.h>
 #include <stddef.h>
+#include <config.h>
 #include <zbar.h>
 
 #ifndef _ZBARMODULE_H_
